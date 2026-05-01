@@ -98,11 +98,11 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                   <div className="flex flex-col gap-2">
                     <div className="text-body-base font-semibold text-on-surface flex items-center gap-2">
                       <Building2 size={16} className="text-secondary" />
-                      {item?.facilityName || 'N/A'}
+                      {item?.clinicName || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
                       <MapPin size={16} className="text-on-surface-variant/70" />
-                      {item?.cityName || 'N/A'}, {item?.stateName || 'N/A'} {item?.location || ''}
+                      {item?.city || 'N/A'}, {item?.state || 'N/A'} {item?.zipCode || ''}
                     </div>
                     <div className="text-body-sm text-on-surface flex items-center gap-2 font-medium">
                       <DollarSign size={16} className="text-primary" />
