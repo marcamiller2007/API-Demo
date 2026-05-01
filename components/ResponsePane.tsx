@@ -92,7 +92,7 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
               Object.entries(data).map(([key, item]: [string, any]) => (
                 <div key={key} className="bg-surface border border-outline-variant/30 rounded-lg p-md shadow-sm hover:border-primary/50 transition-colors">
                   <div className="border-b border-outline-variant/20 pb-sm mb-sm flex justify-between items-center">
-                    <h3 className="text-h3 text-primary font-mono font-bold tracking-tight">{Number(key).toFixed(2)}</h3>
+                    <h3 className="text-h3 text-primary font-mono font-bold tracking-tight">Grade: {Number(key).toFixed(2)} / 100</h3>
                     <span className="text-label-caps text-on-surface-variant bg-surface-variant px-2 py-1 rounded">Location Data</span>
                   </div>
                   <div className="flex flex-col gap-2">
