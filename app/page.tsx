@@ -5,7 +5,7 @@ import RequestPane from '@/components/RequestPane';
 import ResponsePane from '@/components/ResponsePane';
 
 export default function Dashboard() {
-  const [requestBody, setRequestBody] = useState(`{\n  "cptCode": "99213",\n  "zipcode": "78701",\n  "planName": "Blue Cross Blue Shield Platinum",\n  "mode": 1\n}`);
+  const [requestBody, setRequestBody] = useState(`{\n  "cptCode": "74177",\n  "zipcode": "78258",\n  "planName": "UHC Choice Plus",\n  "mode": 0\n}`);
   const [response, setResponse] = useState<any>(null);
   const [status, setStatus] = useState<number | null>(null);
   const [time, setTime] = useState<number>(0);

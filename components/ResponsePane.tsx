@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Clock, Database, Copy, Download, MapPin, Building2, AlertCircle } from 'lucide-react';
+import { Clock, Database, Copy, Download, MapPin, Building2, AlertCircle, DollarSign } from 'lucide-react';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-json';
 
@@ -103,6 +103,10 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
                       <MapPin size={16} className="text-on-surface-variant/70" />
                       {item?.city || 'N/A'}, {item?.state || 'N/A'} {item?.zipCode || ''}
+                    </div>
+                    <div className="text-body-sm text-on-surface flex items-center gap-2 font-medium">
+                      <DollarSign size={16} className="text-primary" />
+                      Rate: {item?.rate !== undefined ? item.rate : 'N/A'}
                     </div>
                   </div>
                 </div>
