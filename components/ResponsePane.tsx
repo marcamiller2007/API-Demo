@@ -92,17 +92,17 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
               Object.entries(data).map(([key, item]: [string, any]) => (
                 <div key={key} className="bg-surface border border-outline-variant/30 rounded-lg p-md shadow-sm hover:border-primary/50 transition-colors">
                   <div className="border-b border-outline-variant/20 pb-sm mb-sm flex justify-between items-center">
-                    <h3 className="text-h3 text-primary font-mono font-bold tracking-tight">{Number(key).toFixed(2)}</h3>
+                    <h3 className="text-h3 text-primary font-mono font-bold tracking-tight">{key}</h3>
                     <span className="text-label-caps text-on-surface-variant bg-surface-variant px-2 py-1 rounded">Location Data</span>
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="text-body-base font-semibold text-on-surface flex items-center gap-2">
                       <Building2 size={16} className="text-secondary" />
-                      {item?.facilityName || 'N/A'}
+                      {item?.clinicName || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
                       <MapPin size={16} className="text-on-surface-variant/70" />
-                      {item?.cityName || 'N/A'}, {item?.stateName || 'N/A'} {item?.location || ''}
+                      {item?.city || 'N/A'}, {item?.state || 'N/A'} {item?.zipCode || ''}
                     </div>
                     <div className="text-body-sm text-on-surface flex items-center gap-2 font-medium">
                       <DollarSign size={16} className="text-primary" />

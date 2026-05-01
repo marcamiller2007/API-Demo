@@ -20,12 +20,17 @@ export default function Dashboard() {
     setHeaders({});
     const startTime = performance.now();
     try {
-      const res = await fetch('http://localhost:5190/api/Routing', {
+      // Strip single-line and multi-line JS comments but preserve contents inside strings
+      const cleanBody = requestBody.replace(/("(?:\\.|[^"\\])*")|(\/\*[\s\S]*?\*\/|\/\/.*$)/gm, (match, stringLiteral) => {
+        return stringLiteral || '';
+      });
+
+      const res = await fetch('http://localhost:5190/api/routing', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: requestBody
+        body: cleanBody
       });
       const endTime = performance.now();
       setTime(Math.round(endTime - startTime));
