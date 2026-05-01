@@ -20,7 +20,7 @@ export default function Dashboard() {
     setHeaders({});
     const startTime = performance.now();
     try {
-      const res = await fetch('http://localhost:5190/api/routing', {
+      const res = await fetch('http://localhost:5190/api/Routing', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

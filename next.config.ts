@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
   },
   output: 'standalone',
   transpilePackages: ['motion'],
-  experimental: {
+  config: {
     turbo: {
       resolveAlias: {
         '@/*': './*',
