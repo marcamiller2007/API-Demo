@@ -90,11 +90,6 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                 </div>
             ) : typeof data === 'object' && data !== null ? (
               Object.entries(data)
-                .sort(([keyA], [keyB]) => {
-                  if (keyA === "0") return 1;
-                  if (keyB === "0") return -1;
-                  return 0;
-                })
                 .map(([key, item]: [string, any]) => (
                 <div key={key} className="bg-surface border border-outline-variant/30 rounded-lg p-md shadow-sm hover:border-primary/50 transition-colors">
                   <div className="border-b border-outline-variant/20 pb-sm mb-sm flex justify-between items-center">
@@ -104,11 +99,11 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                   <div className="flex flex-col gap-2">
                     <div className="text-body-base font-semibold text-on-surface flex items-center gap-2">
                       <Building2 size={16} className="text-secondary" />
-                      {item?.clinicName || 'N/A'}
+                      {item?.facilityName || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
                       <MapPin size={16} className="text-on-surface-variant/70" />
-                      {item?.city || 'N/A'}, {item?.state || 'N/A'} {item?.zipCode || ''}
+                      {item?.cityName || 'N/A'}, {item?.stateName || 'N/A'} {item?.location || ''}
                     </div>
                     <div className="text-body-sm text-on-surface flex items-center gap-2 font-medium">
                       <DollarSign size={16} className="text-primary" />
