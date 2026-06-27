@@ -14,7 +14,7 @@ export default function ActionHeader({ onSend, isLoading }: ActionHeaderProps) {
         </span>
         <div className="flex items-center gap-sm text-on-surface text-body-base bg-surface-container-lowest border border-outline-variant/50 rounded px-sm py-[6px] w-[400px]">
           <span className="text-outline">http://</span>
-          <span className="text-on-surface-variant flex-1 truncate">localhost:5190</span>
+          <span className="text-on-surface-variant flex-1 truncate">api.transparent-health.net</span>
           <span className="text-primary font-medium">/api/routing</span>
         </div>
       </div>

@@ -5,7 +5,7 @@ import RequestPane from '@/components/RequestPane';
 import ResponsePane from '@/components/ResponsePane';
 
 export default function Dashboard() {
-  const [requestBody, setRequestBody] = useState(`{\n  "cptCode": "74177",\n  "zipcode": "78258",\n  "planName": "UHC Choice Plus",\n  "mode": 0\n}`);
+  const [requestBody, setRequestBody] = useState(`{\n  "cptCode": "74177",\n  "zipcode": "78258",\n  "mode": 0\n}`);
   const [response, setResponse] = useState<any>(null);
   const [status, setStatus] = useState<number | null>(null);
   const [time, setTime] = useState<number>(0);
@@ -25,10 +25,11 @@ export default function Dashboard() {
         return stringLiteral || '';
       });
 
-      const res = await fetch('http://localhost:5190/api/routing', {
+      const res = await fetch('http://api.transparent-health.net/api/routing', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Api-Key': ''
         },
         body: cleanBody
       });
@@ -64,7 +65,7 @@ export default function Dashboard() {
     <div className="flex items-center justify-center w-full min-h-screen p-lg overflow-hidden">
       <main className="w-full max-w-7xl h-[85vh] flex flex-col">
         <div className="mb-md">
-          <span className="text-h2 text-on-background">API Architect</span>
+          <span className="text-h2 text-on-background">API Demo</span>
         </div>
 
         <div className="flex-1 flex flex-col border border-outline-variant/30 rounded-xl overflow-hidden shadow-2xl bg-surface">

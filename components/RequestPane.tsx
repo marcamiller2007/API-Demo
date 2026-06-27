@@ -41,7 +41,7 @@ export default function RequestPane({ requestBody, setRequestBody }: RequestPane
           className="flex-1 bg-transparent text-on-surface-variant outline-none font-mono"
           style={{
             fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-            fontSize: 13,
+            fontSize: 14,
           }}
           textareaClassName="focus:outline-none"
         />
