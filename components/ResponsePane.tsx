@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Clock, Database, Copy, Download, MapPin, Building2, AlertCircle, DollarSign } from 'lucide-react';
+import { Clock, Database, Copy, Download, MapPin, Phone, Building2, AlertCircle, DollarSign, CircleCheckBig } from 'lucide-react';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-json';
 
@@ -21,6 +21,24 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
     if (bytes < 1024) return `${bytes} B`;
     return `${(bytes / 1024).toFixed(1)} KB`;
   };
+
+  const cleanPhone = (phone: string) => {
+    let cleaned : string= "(";
+
+    cleaned += phone.substring(2, 5) + ") ";
+    cleaned += phone.substring(5, 8) + "-";
+    cleaned += phone.substring(8);
+
+    return cleaned;
+  }
+
+  const cleanDate = (date: string) => {
+    let cleaned : string = date.substring(5, 7);
+    cleaned += "/" + date.substring(8, 10);
+    cleaned += "/" + date.substring(0, 4);
+
+    return cleaned;
+  }
 
   const isSuccess = status !== null && status >= 200 && status < 300;
 
@@ -106,8 +124,12 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                       {item?.clinic.city || 'N/A'}, {item?.clinic.state || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
-                      <MapPin size={16} className="text-on-surface-variant/70" />
-                      Phone: {item?.clinic.phoneNumber || 'N/A'}, Last Confirmed: {item?.recordedAt || 'N/A'} {}
+                      <Phone size={16} className="text-on-surface-variant/70" />
+                      Phone: {cleanPhone(item?.clinic.phoneNumber) || 'N/A'}
+                    </div>
+                    <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
+                      <CircleCheckBig size={16} className="text-on-surface-variant/70" />
+                      Last Confirmed: {cleanDate(item?.recordedAt) || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface flex items-center gap-2 font-medium">
                       <DollarSign size={16} className="text-primary" />
