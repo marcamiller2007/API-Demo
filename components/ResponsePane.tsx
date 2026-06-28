@@ -85,7 +85,7 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                     <div>
                         <h3 className="font-bold text-h3 mb-sm">Request Failed</h3>
                         <p className="text-body-base opacity-90">{data?.error || "Unknown error"}</p>
-                        <p className="text-body-sm opacity-75 mt-md">Note: Fetching <code>localhost</code> from a cloud preview URL may be blocked by your browser due to Mixed Content restrictions or lack of network connectivity to your local machine.</p>
+                        <p className="text-body-sm opacity-75 mt-md">Note: Fetching <code>api.transparent-health.net</code> from a cloud preview URL may be blocked by your browser due to Mixed Content restrictions or lack of network connectivity to your local machine.</p>
                     </div>
                 </div>
             ) : typeof data === 'object' && data !== null ? (
@@ -94,20 +94,24 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                 <div key={key} className="bg-surface border border-outline-variant/30 rounded-lg p-md shadow-sm hover:border-primary/50 transition-colors">
                   <div className="border-b border-outline-variant/20 pb-sm mb-sm flex justify-between items-center">
                     <h3 className="text-h3 text-primary font-mono font-bold tracking-tight">Grade: {Number(key).toFixed(2)} / 100</h3>
-                    <span className="text-label-caps text-on-surface-variant bg-surface-variant px-2 py-1 rounded">Location Data</span>
+                    {/* <span className="text-label-caps text-on-surface-variant bg-surface-variant px-2 py-1 rounded">Location Data</span> */}
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="text-body-base font-semibold text-on-surface flex items-center gap-2">
                       <Building2 size={16} className="text-secondary" />
-                      {item?.facilityName || 'N/A'}
+                      {item?.clinic.name || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
                       <MapPin size={16} className="text-on-surface-variant/70" />
-                      {item?.cityName || 'N/A'}, {item?.stateName || 'N/A'} {item?.location || ''}
+                      {item?.clinic.city || 'N/A'}, {item?.clinic.state || 'N/A'}
+                    </div>
+                    <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
+                      <MapPin size={16} className="text-on-surface-variant/70" />
+                      Phone: {item?.clinic.phoneNumber || 'N/A'}, Last Confirmed: {item?.recordedAt || 'N/A'} {}
                     </div>
                     <div className="text-body-sm text-on-surface flex items-center gap-2 font-medium">
                       <DollarSign size={16} className="text-primary" />
-                      Rate: {item?.rate !== undefined ? item.rate : 'N/A'}
+                      Rate: ${item?.price !== undefined ? item.price : 'N/A'}
                     </div>
                   </div>
                 </div>

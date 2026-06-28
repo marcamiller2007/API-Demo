@@ -5,7 +5,7 @@ import RequestPane from '@/components/RequestPane';
 import ResponsePane from '@/components/ResponsePane';
 
 export default function Dashboard() {
-  const [requestBody, setRequestBody] = useState(`{\n  "cptCode": "74177",\n  "zipcode": "78258",\n  "mode": 0\n}`);
+  const [requestBody, setRequestBody] = useState(`{\n  "cptCode": "76700",\n  "zipcode": "78746",\n  "mode": 0\n}`);
   const [response, setResponse] = useState<any>(null);
   const [status, setStatus] = useState<number | null>(null);
   const [time, setTime] = useState<number>(0);
@@ -25,7 +25,7 @@ export default function Dashboard() {
         return stringLiteral || '';
       });
 
-      const res = await fetch('http://api.transparent-health.net/api/routing', {
+      const res = await fetch('https://api.transparent-health.net/api/routing', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export default function Dashboard() {
 
       const text = await res.text();
       setSize(new Blob([text]).size);
-
+      
       try {
         setResponse(JSON.parse(text));
       } catch {
