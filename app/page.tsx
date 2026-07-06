@@ -5,7 +5,7 @@ import RequestPane from '@/components/RequestPane';
 import ResponsePane from '@/components/ResponsePane';
 
 export default function Dashboard() {
-  const [requestBody, setRequestBody] = useState(`{\n  "cptCode": "76700",\n  "zipcode": "78746",\n  "mode": 0\n}`);
+  const [requestBody, setRequestBody] = useState(`{\n  "cptCode": "76700" /* Complete Abdominal Ultrasound */,\n  "zipcode": "78746",\n  "mode": "Balanced", /* Location, Price, or Balanced Ranking */\n  "priceType": "Bundled" /* Dealing with incomplete pricing */\n}`);
   const [response, setResponse] = useState<any>(null);
   const [status, setStatus] = useState<number | null>(null);
   const [time, setTime] = useState<number>(0);
@@ -45,6 +45,8 @@ export default function Dashboard() {
 
       const text = await res.text();
       setSize(new Blob([text]).size);
+
+      console.log(text); 
       
       try {
         setResponse(JSON.parse(text));

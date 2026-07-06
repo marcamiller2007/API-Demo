@@ -108,24 +108,24 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                 </div>
             ) : typeof data === 'object' && data !== null ? (
               Object.entries(data)
-                .map(([key, item]: [string, any]) => (
-                <div key={key} className="bg-surface border border-outline-variant/30 rounded-lg p-md shadow-sm hover:border-primary/50 transition-colors">
+                .map(([index, item] : [string, any]) => (
+                <div key={index} className="bg-surface border border-outline-variant/30 rounded-lg p-md shadow-sm hover:border-primary/50 transition-colors">
                   <div className="border-b border-outline-variant/20 pb-sm mb-sm flex justify-between items-center">
-                    <h3 className="text-h3 text-primary font-mono font-bold tracking-tight">Grade: {Number(key).toFixed(2)} / 100</h3>
+                    <h3 className="text-h3 text-primary font-mono font-bold tracking-tight">Rank: {Number(index) + 1}</h3>
                     {/* <span className="text-label-caps text-on-surface-variant bg-surface-variant px-2 py-1 rounded">Location Data</span> */}
                   </div>
                   <div className="flex flex-col gap-2">
                     <div className="text-body-base font-semibold text-on-surface flex items-center gap-2">
                       <Building2 size={16} className="text-secondary" />
-                      {item?.clinic.name || 'N/A'}
+                      {item?.clinic?.name || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
                       <MapPin size={16} className="text-on-surface-variant/70" />
-                      {item?.clinic.city || 'N/A'}, {item?.clinic.state || 'N/A'}
+                      {item?.clinic?.city || 'N/A'}, {item?.clinic?.state || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
                       <Phone size={16} className="text-on-surface-variant/70" />
-                      Phone: {cleanPhone(item?.clinic.phoneNumber) || 'N/A'}
+                      Phone: {cleanPhone(item?.clinic?.phoneNumber) || 'N/A'}
                     </div>
                     <div className="text-body-sm text-on-surface-variant flex items-center gap-2">
                       <CircleCheckBig size={16} className="text-on-surface-variant/70" />
@@ -133,7 +133,7 @@ export default function ResponsePane({ data, status, time, size, isLoading, head
                     </div>
                     <div className="text-body-sm text-on-surface flex items-center gap-2 font-medium">
                       <DollarSign size={16} className="text-primary" />
-                      Rate: ${item?.price !== undefined ? item.price : 'N/A'}
+                      Bundled Rate: ${item?.price !== undefined ? item.price : 'N/A'}
                     </div>
                   </div>
                 </div>
